@@ -19,22 +19,7 @@ Route::get('/resume', 'HomeController@showResume');
 
 Route::get('/portfolio', 'HomeController@showPortfolio');
 
-Route::get('/sayhello/{name}', function($name)
-{
-    return View::make('my-first-view')->with('name', $name);
-});
+Route::get('/sayhello/{name}', 'HomeController@sayHello');
 
-Route::get('/rolldice/{guess}', function($guess)
-{	
-	$roll = mt_rand(1, 6);
-	$message =$roll == $guess ? "Way to go!" : "Wrong Guess";
-	$data = array(
-		'guess' => $guess,
-		'roll' => $roll,
-		'message' => $message
-
-		);
-		return View::make('roll-dice')->with($data);
-	
-});
+Route::get('/rolldice/{guess}', 'HomeController@rolldice');
 
