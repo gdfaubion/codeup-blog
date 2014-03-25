@@ -9,7 +9,8 @@ class PostsController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		//return View::make('');
+		return "This will show a list of all posts.";
 	}
 
 	/**
@@ -19,7 +20,8 @@ class PostsController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		// return "This will show a form for creating a post.";
+		return View::make('posts.create');
 	}
 
 	/**
@@ -29,7 +31,10 @@ class PostsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		// return "This will show a new post.";
+		Log::info(Input::all());
+		
+		return Redirect::back()->withInput();
 	}
 
 	/**
@@ -40,7 +45,8 @@ class PostsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		//return View::make('')->with('id', $id);
+		return "This will show a specific post.";
 	}
 
 	/**
@@ -51,7 +57,8 @@ class PostsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		//return View::make('')->with('id', $id);
+		return "This will show a form for editing a specific post.";
 	}
 
 	/**
@@ -62,7 +69,8 @@ class PostsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		//return View::make('')->with('id', $id)
+		return "This will update a specific post.";
 	}
 
 	/**
@@ -73,7 +81,8 @@ class PostsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		//return View::make('')->with('id', $id);
+		return "This will delete a specific post.";
 	}
 
 }
