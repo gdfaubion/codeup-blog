@@ -23,7 +23,7 @@ class HomeController extends BaseController {
 	public function rollDice($guess)
 	{
 		$roll = mt_rand(1, 6);
-		$message =$roll == $guess ? "Way to go!" : "Wrong Guess";
+		$message = $roll == $guess ? "Way to go!" : "Wrong Guess";
 		$data = array(
 		'guess' => $guess,
 		'roll' => $roll,
