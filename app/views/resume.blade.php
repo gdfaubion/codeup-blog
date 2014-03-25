@@ -7,7 +7,6 @@
 	<div class="container">
 		<div class="row">
 		  <div class="col-xs-6 col-md-3">
-		      <!-- <img src="img/profile-pic.jpg" alt="profile-pic"> -->
 		  </div>
 		</div>
 		<div class="row">
@@ -22,8 +21,9 @@
 				<a href="mailto:gdfaubion@gmail.com">
 				<p><span class="glyphicon glyphicon-envelope"></span> | gdfaubion@gmail.com</p>
 				</a>
-				<p><strong>214-223-6190</strong></p>
-			</strong></div>
+				<p>214-223-6190</p>
+			</strong>
+			</div>
 			<div class="col-md-2"><img src="img/profile-pic2.jpg" alt="profile-pic" class="img-thumbnail"></div>
 		</div>
 		<div class="row">

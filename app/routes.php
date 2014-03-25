@@ -11,25 +11,13 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', 'HomeController@showWelcome');
 
-Route::get('/home', function()
-{
-    return View::make('home');
-});
+Route::get('/home', 'HomeController@showHome');
 
-Route::get('/resume', function()
-{
-    return View::make('resume');
-});
+Route::get('/resume', 'HomeController@showResume');
 
-Route::get('/portfolio', function()
-{
-    return View::make('portfolio');
-});
+Route::get('/portfolio', 'HomeController@showPortfolio');
 
 Route::get('/sayhello/{name}', function($name)
 {
