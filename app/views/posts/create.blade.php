@@ -9,13 +9,13 @@
 	    <div class="form-group">
 	      <label for="title" class="col-lg-2 control-label">Title</label>
 	      <div class="col-lg-10">
-	        <input name="text" type="text" class="form-control" id="title" placeholder="Title" value="{{{ Input::old('title') }}}">
+	        <input name="title" type="text" class="form-control" id="title" placeholder="Title" value="{{{ Input::old('title') }}}">
 	      </div>
 	    </div>
 	    <div class="form-group">
-	      <label for="body" class="col-lg-2 control-label">Text Area</label>
+	      <label for="body" class="col-lg-2 control-label">Body</label>
 	      <div class="col-lg-10">
-	        <textarea name="body" class="form-control" rows="3" id="body" value="{{{ Input::old('body') }}}"></textarea>
+	        <textarea name="body" class="form-control" rows="3" id="body" placeholder="Body">{{{ Input::old('body') }}}</textarea>
 	      </div>
 	    </div>
 	   <div class="col-lg-10 col-lg-offset-2">
