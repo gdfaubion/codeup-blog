@@ -19,3 +19,20 @@ Route::get('/home', 'HomeController@showHome');
 Route::get('/resume', 'HomeController@showResume');
 
 Route::get('/portfolio', 'HomeController@showPortfolio');
+
+Route::get('orm-test', function () {
+    // $posts = Post::all();
+
+    // foreach($posts as $post) {
+    // 	echo '<h2>' . $post->title . '</h2>' . '<p>' . $post->body . '</p>';
+    // }
+
+    // $post = Post::find(1);
+    // $post->delete();
+
+ //    $post1 = new Post();
+	// $post1->title = "Awesome!";
+	// $post1->body = "Look at this post.";
+	// $post1->save();
+	
+});
