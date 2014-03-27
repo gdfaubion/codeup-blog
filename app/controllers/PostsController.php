@@ -22,7 +22,7 @@ class PostsController extends \BaseController {
 	 */
 	public function create()
 	{
-		// return "This will show a form for creating a post.";
+		//This will show a form for creating a post.
 		return View::make('posts.create');
 	}
 
@@ -33,20 +33,29 @@ class PostsController extends \BaseController {
 	 */
 	public function store()
 	{
-		// return "This will show a new post.";
-
+		//This will creat and save a new post
+		//Logging info
 		Log::info(Input::all());
+		// create the validator
+		$validator = Validator::make(Input::all(), Post::$rules);
+		// attempt validation
+		if($validator->fails()) {
+			// validation fail so redirect back with input and errors
+			return Redirect::back()->withInput()->withErrors($validator);
 
-		$post = new Post();
+		} else {
+			//validate succeeded create and save the post
+			$post = new Post();
 
-		$post->title = Input::get('title');
+			$post->title = Input::get('title');
 
-		$post->body = Input::get('body');
+			$post->body = Input::get('body');
 
-		$post->save();
+			$post->save();
 
-		// return Redirect::back()->withInput();
-		return Redirect::action('PostsController@index');
+			return Redirect::action('PostsController@index');
+		}
+
 	}
 
 	/**
@@ -57,7 +66,7 @@ class PostsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$posts = Post::find($id);
+		$posts = Post::findOrFail($id);
 
     	return View::make('posts.show')->with('posts', $posts);
 	}
@@ -71,7 +80,11 @@ class PostsController extends \BaseController {
 	public function edit($id)
 	{
 		//return View::make('')->with('id', $id);
-		return "This will show a form for editing a specific post.";
+		//return "This will show a form for editing a specific post.";
+		$post = Post::findOrFail($id);
+		return View::make('posts.edit')->with('post', $post);
+
+		
 	}
 
 	/**
@@ -83,7 +96,25 @@ class PostsController extends \BaseController {
 	public function update($id)
 	{
 		//return View::make('')->with('id', $id)
-		return "This will update a specific post.";
+		//find post id
+		$post = Post::findOrFail($id);
+		// create the validator
+		$validator = Validator::make(Input::all(), Post::$rules);
+		// attempt validation
+		if($validator->fails()) {
+			// validation fail so redirect back with input and errors
+			return Redirect::back()->withInput()->withErrors($validator);
+
+		} else {
+			//validate succeeded create and save the post
+			$post->title = Input::get('title');
+
+			$post->body = Input::get('body');
+
+			$post->save();
+
+			return Redirect::action('PostsController@index');
+		}
 	}
 
 	/**
