@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <title>Grace's Blog</title>
+    <script src="/js/jquery.js"></script>
+    <script src="bootbox.min.js"></script>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<link rel="stylesheet" href="/css/flatly-bootstrap.css">
 	<link rel="stylesheet" href="/css/resume.css">
@@ -37,7 +39,19 @@
       </ul>
 	  </div>
 	</nav>
+   @if (Session::has('successMessage'))
+    <div class="alert alert-success">{{{ Session::get('successMessage') }}}</div>
+    @endif
+    @if (Session::has('errorMessage'))
+        <div class="alert alert-danger">{{{ Session::get('errorMessage') }}}</div>
+    @endif
 	@yield('content')
+
+  @yield('bottom-script')
+  <script type="text/javascript">
+      $('.alert-success').fadeOut(3000);
+      $('.alert-danger').fadeOut(3000);
+  </script>
 </body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
