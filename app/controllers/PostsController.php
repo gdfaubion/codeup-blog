@@ -19,7 +19,7 @@ class PostsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$posts = Post::orderBy('Created_at', 'desc')->paginate(3);
+		$posts = Post::orderBy('Created_at', 'desc')->paginate(5);
 
     	return View::make('posts.index')->with('posts', $posts);
 
@@ -33,7 +33,7 @@ class PostsController extends \BaseController {
 	public function create()
 	{
 		//This will show a form for creating a post.
-		return View::make('posts.create');
+		return View::make('posts.create-edit');
 	}
 
 	/**
@@ -96,7 +96,7 @@ class PostsController extends \BaseController {
 		//return View::make('')->with('id', $id);
 		//return "This will show a form for editing a specific post.";
 		$post = Post::findOrFail($id);
-		return View::make('posts.edit')->with('post', $post);
+		return View::make('posts.create-edit')->with('post', $post);
 
 		
 	}

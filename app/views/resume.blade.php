@@ -4,7 +4,7 @@
 <div class="page-header">
 <h1>Grace Faubion <small> Junior Software Developer</small></h1>
 	</div>
-	<div class="container">
+	<div class="container" id="resume-container">
 		<div class="row">
 		  <div class="col-xs-6 col-md-3">
 		  </div>
