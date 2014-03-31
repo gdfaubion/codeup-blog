@@ -16,7 +16,7 @@
             @foreach ($posts as $post)
           <div class="blog-post">
             <h2 class="blog-post-title">{{{$post->title}}}</h2>
-            <p class="blog-post-meta">{{{$post->created_at->setTimezone('America/Chicago')->format('l, F jS @ h:i:s A')}}} <a href="#">Chris</a></p>
+            <p class="blog-post-meta">{{{$post->created_at->format('l, F jS @ h:i:s A')}}} <a href="#">Chris</a></p>
             <p>{{{ Str::words($post->body, 10)}}}</p>
             <p><a href="{{{action('PostsController@show', $post->id)}}}">View Post</a>
           </div><!-- /.blog-post -->
