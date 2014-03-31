@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="page-header">
-<h1>Grace Faubion <small> Junior Software Developer</small></h1>
+<h1>Grace Faubion <small> Junior Software Developer!</small></h1>
 	</div>
 	<div class="container" id="resume-container">
 		<div class="row">
