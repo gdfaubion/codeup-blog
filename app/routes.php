@@ -20,6 +20,12 @@ Route::get('/resume', 'HomeController@showResume');
 
 Route::get('/portfolio', 'HomeController@showPortfolio');
 
+Route::get('/login', 'HomeController@showLogin');
+
+Route::get('/logout', 'HomeController@logout');
+
+Route::post('/login', 'HomeController@doLogin');
+
 Route::get('orm-test', function () {
     // $posts = Post::all();
 

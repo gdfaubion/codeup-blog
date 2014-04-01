@@ -13,7 +13,7 @@
         <div class="col-sm-8 blog-main">
           <div class="blog-post">
             <h2 class="blog-post-title">{{{$post->title}}}</h2>
-            <p class="blog-post-meta">{{{$post->created_at->format('l, F jS @ h:i:s A')}}} <a href="#">Chris</a></p>
+            <p class="blog-post-meta">{{{$post->created_at->setTimezone('America/Chicago')->format('l, F jS @ h:i:s A')}}} <a href="#">Chris</a></p>
             <p>{{{$post->body}}}</p>
             <p><a href="{{{ action('PostsController@edit', $post->id) }}}">Edit Post</a> | <a href="#" id="btnDeletePost">Delete Post</a> | <a href="{{{ action('PostsController@index') }}}">View All Posts</a> | <a href="{{{ action('PostsController@create')}}}">Create New Post</a></p>
           </div><!-- /.blog-post -->

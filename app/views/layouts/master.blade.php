@@ -5,8 +5,9 @@
     <script src="/js/jquery.js"></script>
     <script src="bootbox.min.js"></script>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/flatly-bootstrap.css">
-  <link rel="stylesheet" href="/css/resume.css">
+    <link rel="stylesheet" href="/css/flatly-bootstrap.css">
+    <link rel="stylesheet" href="/css/resume.css">
+    <link href="signin.css" rel="stylesheet"
 </head>
 <body>
     <nav class="navbar navbar-default navbar-static-top" role="navigation">
@@ -25,6 +26,11 @@
         <li class="{{ Request::is('resume') ? 'active' : '' }}"><a href="{{{ action('HomeController@showResume') }}}">Resume</a></li>
         <li class="{{ Request::is('portfolio') ? 'active' : '' }}"><a class="nav-text" href="{{{ action('HomeController@showPortfolio') }}}">Portfolio</a></li>
         <li class="{{ Request::is('blog') ? 'active' : '' }}"><a class="nav-text" href="{{{ action('PostsController@index') }}}">Blog</a></li>
+        @if (Auth::check())
+        <li><a class="nav-text" href="{{{ action('HomeController@logout') }}}">Logout ({{{ Auth::user()->email }}})</a></li>
+        @else 
+        <li><a class="nav-text" href="{{{ action('HomeController@showLogin') }}}">Login</a></li>
+        @endif
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Projects<b class="caret"></b></a>
           <ul class="dropdown-menu">
@@ -41,10 +47,10 @@
     </div>
   </nav>
    @if (Session::has('successMessage'))
-    <div class="alert alert-success">{{{ Session::get('successMessage') }}}</div>
+      <div class="alert alert-success" style="text-align:center">{{{ Session::get('successMessage') }}}</div>
     @endif
     @if (Session::has('errorMessage'))
-        <div class="alert alert-danger">{{{ Session::get('errorMessage') }}}</div>
+      <div class="alert alert-danger" style="text-align:center">{{{ Session::get('errorMessage') }}}</div>
     @endif
   @yield('content')
 
