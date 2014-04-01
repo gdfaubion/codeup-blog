@@ -1,24 +1,24 @@
-	i{
-		font-size: 3em;
-	}
-	.label{
-		font-size: 1em;
+i{
+	font-size: 3em;
+}
+.label{
+	font-size: 1em;
 
-	}
-	.page-header{
-		text-align: center;
-	}
-	.glyphicon{
-		font-size: 1em;
-	}
-	.blog-footer{
-		background-color: #f9f9f9;
-		border-top: 1px solid #e5e5e5;
-		text-align: center;
-		color: #999;
-		padding: 40px 0;
-	}
-	#resume-container{
-		margin: 0 98px 0 98px;
-		padding: 0 15px 0 15px;
-	}
+}
+.page-header{
+	text-align: center;
+}
+.glyphicon{
+	font-size: 1em;
+}
+.blog-footer{
+	background-color: #f9f9f9;
+	border-top: 1px solid #e5e5e5;
+	text-align: center;
+	color: #999;
+	padding: 40px 0;
+}
+#resume-container{
+	margin: 0 98px 0 98px;
+	padding: 0 15px 0 15px;
+}
