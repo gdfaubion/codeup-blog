@@ -56,7 +56,8 @@
     <div class="blog-footer">
         <p>Grace Faubion's Blog! Built at CodeUp! </p>
         <p>
-        <a href="http://blog.dev/home">Back to top</a>
+        <a href="http://blog.dev/index.html#disqus_thread">Back to top</a>
         </p>
     </div>
+
 @stop
