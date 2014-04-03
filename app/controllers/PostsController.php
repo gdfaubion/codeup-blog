@@ -1,6 +1,6 @@
 <?php
 
-class PostsController extends \BaseController {
+class PostsController extends BaseController {
 	
 	//require authentication for creating or modifying posts
 	public function __construct()
@@ -27,7 +27,9 @@ class PostsController extends \BaseController {
 		if(is_null($search)) {
 			$posts = $query->paginate(3);
 		} else {
-			$posts = $query->where('title', 'LIKE', "%{$search}%")->orWhere('body', 'LIKE', "%{$search}%")->paginate(5);
+			$posts = $query->where('title', 'LIKE', "%{$search}%")
+						   ->orWhere('body', 'LIKE', "%{$search}%")
+						   ->paginate(5);
 		}
 
 		return View::make('posts.index')->with('posts', $posts);
@@ -51,7 +53,6 @@ class PostsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//This will creat and save a new post
 		//Logging info
 		Log::info(Input::all());
 		// create the validator
@@ -72,6 +73,15 @@ class PostsController extends \BaseController {
 			$post->title = Input::get('title');
 
 			$post->body = Input::get('body');
+
+			if ( Input::hasFile('image') ) { 
+
+				$file = Input::file('image');
+
+				$post->imageUpload($file);
+			}
+
+			$post->user_id = Auth::user()->id;
 
 			$post->save();
 
@@ -103,9 +113,9 @@ class PostsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//return View::make('')->with('id', $id);
-		//return "This will show a form for editing a specific post.";
+
 		$post = Post::findOrFail($id);
+
 		return View::make('posts.create-edit')->with('post', $post);
 
 		
@@ -137,6 +147,15 @@ class PostsController extends \BaseController {
 
 			$post->body = Input::get('body');
 
+			if ( Input::hasFile('image') ) { 
+
+				$file = Input::file('image');
+
+				$post->imageUpload($file);
+			}
+
+			$post->user_id = Auth::user()->id;
+
 			$post->save();
 			
 			Session::flash('successMessage', 'Post updated successfully');
@@ -155,7 +174,9 @@ class PostsController extends \BaseController {
 	{
 		//This will delete a specific post.
 		Post::find($id)->delete();
+
 		Session::flash('successMessage', 'Post deleted successfully');
+
 		return Redirect::action('PostsController@index');
 
 	}

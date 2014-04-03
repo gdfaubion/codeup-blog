@@ -4,8 +4,8 @@
     <div class="container">
 
         <div class="blog-header">
-            <h1 class="blog-title">The Bootstrap Blog</h1>
-                <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
+            <h1 class="blog-title">The Blog</h1>
+                <p class="lead blog-description">Stuff and Words and Things</p>
         </div>
 
     <div class="row">
@@ -13,14 +13,32 @@
         <div class="col-sm-8 blog-main">
             <div class="blog-post">
                 <h2 class="blog-post-title">{{{$post->title}}}</h2>
-                <p><a href="{{{ action('PostsController@edit', $post->id) }}}">Edit Post</a> | <a href="#" id="btnDeletePost">Delete Post</a> | <a href="{{{ action('PostsController@index') }}}">View All Posts</a> | <a href="{{{ action('PostsController@create')}}}">Create New Post</a></p>
-                <p class="blog-post-meta">{{{$post->created_at->setTimezone('America/Chicago')->format('l, F jS @ h:i:s A')}}} {{{ $post->user->email }}}</p>
+
+                @if ( Auth::check() )
+                    <p><a href="{{{ action('PostsController@edit', $post->id) }}}">Edit Post</a> | <a href="#" id="btnDeletePost">Delete Post</a> | <a href="{{{ action('PostsController@index') }}}">View All Posts</a></p>
+                @else
+                    <p><a href="{{{ action('PostsController@index') }}}">View All Posts</a></p>
+                @endif 
+
+                <p class="blog-post-meta">
+                    {{{$post->created_at->format('l, F jS @ h:i:s A')}}} {{{ $post->user->first_name }}}
+                </p>
                 <blockquote>
-                <p>{{{$post->body}}}</p>
+                <p>
+                    <img src="{{{ $post->image }}}">
+                </p>
+                <p>
+                    {{{$post->body}}}
+                </p>
                 </blockquote>
             </div><!-- /.blog-post -->
         </div><!-- /.blog-main -->
 
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+            <div class="sidebar-module sidebar-module-inset" id="aboutSidebar">
+                <a href="{{{ action('PostsController@create')}}}"><span class="glyphicon glyphicon-plus"></span>Create New Post</a></p>
+            </div>
+        </div>
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
             <div class="sidebar-module sidebar-module-inset" id="aboutSidebar">
                 <h4>About</h4>

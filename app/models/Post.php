@@ -1,6 +1,6 @@
 <?php
 
-class Post extends Eloquent {
+class Post extends BaseModel {
 
     protected $table = 'posts';
     
@@ -20,4 +20,23 @@ class Post extends Eloquent {
 	    return $this->belongsTo('User');
 	}
 
+	/**
+	*
+	*image upload function
+	*saves image path to database
+	*
+	*/
+	public function imageUpload($file)
+	{
+
+		$destinationPath = 'uploads/images';
+
+		$filename = $file->getClientOriginalName();
+
+		$file->move($destinationPath, $filename);
+
+		$pathToFile = "/uploads/images/" . $filename;
+
+		$this->image = $pathToFile;
+	}
 }

@@ -14,8 +14,11 @@
                 @foreach ($posts as $post)
                     <div class="blog-post">
                         <h2 class="blog-post-title">{{{ $post->title }}}</h2>
-                        <p class="blog-post-meta">{{{ $post->created_at->setTimezone('America/Chicago')->format('l, F jS @ h:i:s A') }}} {{{ $post->user->email }}}</p>
+                        <p class="blog-post-meta">{{{ $post->created_at->format('l, F jS @ h:i:s A') }}} {{{ $post->user->first_name }}}</p>
                         <blockquote>
+                        <p>
+                        <img src="{{{ $post->image }}}">
+                        </p>
                         <p>{{{ Str::words($post->body, 10)}}}</p>
                         </blockquote>
                         <p><a href="{{{action('PostsController@show', $post->id)}}}">View Post</a>
