@@ -14,7 +14,7 @@
             <div class="blog-post">
                 <h2 class="blog-post-title">{{{$post->title}}}</h2>
 
-                @if ( Auth::check() )
+                @if (Auth::user()->canManagePost($post))
                     <p><a href="{{{ action('PostsController@edit', $post->id) }}}">Edit Post</a> | <a href="#" id="btnDeletePost">Delete Post</a> | <a href="{{{ action('PostsController@index') }}}">View All Posts</a></p>
                 @else
                     <p><a href="{{{ action('PostsController@index') }}}">View All Posts</a></p>
